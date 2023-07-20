@@ -13,7 +13,7 @@ nunjucks.configure('views', {
 app.use(express.json({ type : 'application/json'}));
 app.use(express.urlencoded({extended:true}));
 
-app.get('/', (req, res) => res.render('index.html',));
+app.get('/', (req, res) => res.render('index.html'));
 app.use('/Coin', CoinRouter);
 app.use('/Gold', GoldRouter);
 app.use('/Stock', StockRouter);
