@@ -1,12 +1,8 @@
 const express = require('express');
-const session = require('express-session');
-const authRouter = require('./localblog/routes/auth');
-const myPageRouter = require('./localblog/routes/myPage');
-const blogRouter = require('./localblog/routes/blog');
-const playlistRouter = require('./localblog/routes/playlist');
-const sessionConfig = require('./session');
+const CoinRouter = require('./routes/Coin');
+const StockRouter = require('./routes/Stock');
+const GoldRouter = require('./routes/Gold');
 const nunjucks = require('nunjucks');
-const path = require('path');
 const app = express();
 
 nunjucks.configure('views', {
@@ -14,16 +10,12 @@ nunjucks.configure('views', {
   express: app,
 })
 
-app.use('/static/', express.static(path.join(__dirname, 'images')));
-app.use(session(sessionConfig));
 app.use(express.json({ type : 'application/json'}));
 app.use(express.urlencoded({extended:true}));
 
-app.get('/', (req, res) => res.render('index.html', {user : req.session.user}));
-app.get('/aris', (req, res) => res.render('myPage/aris.html'))
-app.use('/auth', authRouter); 
-app.use('/myPage', myPageRouter);
-app.use('/blog', blogRouter);
-app.use('/playlist', playlistRouter);
-// app.use('/guide', guideRouter);
+app.get('/', (req, res) => res.render('index.html',));
+app.use('/Coin', CoinRouter);
+app.use('/Gold', GoldRouter);
+app.use('/Stock', StockRouter);
+
 app.listen(3000);
