@@ -9,7 +9,7 @@ const print = (req, res) => {
         if (error) throw new Error(error);
         let info = JSON.parse(body).slice(0, 100);
         console.log(info[0]);
-        res.render('main/coin.html', {coins: info});
+        res.render('contents/coin.html', {coins: info});
     });
 }
 

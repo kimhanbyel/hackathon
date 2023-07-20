@@ -12,8 +12,6 @@ const gold = (req, res) => {
     axios.get(url, {
         params,
         }).then((response) => {
-            console.log(response.data.response.body.items.item);
-            // console.log(response.data.response.body.items.item[0]["itmsNm"]);
             res.render('../views/contents/Gold.html', {gold : response.data.response.body.items.item});
     });
 }
