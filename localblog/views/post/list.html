@@ -1,0 +1,39 @@
+ {% extends "index.html" %}
+{% block mid %} 
+
+<ul role="list" class="ml-60 mr-80 divide-y divide-gray-80">
+  {% if posts %}
+    {% for post in posts %}
+    <a href="/blog/post/{{post.idposts}}">
+      <li class="flex justify-between gap-x-6 py-5">
+        <div class="flex gap-x-4 w-96">
+          {% if post.img %}
+            <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="/static/{{post.img}}" alt="">
+          {% else %}
+            <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="/static/basicPostImg.png" alt="">
+          {% endif %}
+            <div class="min-w-0 flex-auto">
+              <p style="text-overflow: ellipsis" class="w-96 text-xl font-semibold leading-5 text-gray-900">{{post.title}}</p>
+              <p style="text-overflow: ellipsis" class="w-40 mt-1 truncate text-m leading-5 text-gray-500">{{post.content}}</p>
+            </div>
+        </div>
+        <div class="hidden sm:flex sm:flex-col sm:items-end">
+          <div class="flex">
+            <p class="text-base text-gray-900">💬 </p><p class="text-indigo-900">{{post.commentCnt}} </p>  
+            <p class="ml-5 text-base text-gray-900">👁 </p><p class="text-indigo-900">{{post.views}}</p>
+          </div>
+          <p class="w-20 mt-1 text-s leading-5 text-gray-900">{{post.writer}}</p>
+        </div>
+      </li>
+    </a>
+    <div class="bg-gray-700 w-auto h-0"></div>
+    {% endfor %}
+  {% endif %}
+</ul>
+
+<script>
+  document.title = "글 목록"
+</script>
+
+
+{% endblock %}
