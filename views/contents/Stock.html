@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{% block mid %}
+<table class="table table-striped text-center">
+    <th>순위</th>
+    <th>상품이름</th>
+    <th>시가 총액</th>
+    <th>전일대비 등락률</th>
+    <th>하루 중 가격의 최고치</th>
+    <th>하루 중 가격의 최저치</th>
+    <th>상장 주식 수</th>
+    {% for stock in stock %}
+    <tr>
+        <td>
+            {{loop.index}}
+        </td>
+        <td>
+            {{ stock.itmsNm }}
+        </td>
+        <td>
+            {{ stock.mrktTotAmt }}
+        </td>
+        <td>
+            {{ stock.fltRt }}
+        </td>
+        <td>
+            {{ stock.hipr }}
+        </td>
+        <td>
+            {{ stock.lopr }}
+        </td>
+        <td>
+            {{ stock.lstgStCnt }}
+        </td>
+    </tr>
+    {% endfor %}
+{% endblock %}
